@@ -192,11 +192,43 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
     background: var(--bg);
     color: var(--ink);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    transition:
+      opacity var(--dur-ui) var(--ease-out),
+      transform var(--dur-ui) var(--ease-out),
+      overlay var(--dur-ui) allow-discrete,
+      display var(--dur-ui) allow-discrete;
+  }
+
+  .pmodal[open] {
+    opacity: 1;
+    transform: none;
   }
 
   .pmodal::backdrop {
     background: rgba(10, 11, 14, 0.55);
     backdrop-filter: blur(3px);
+    opacity: 0;
+    transition:
+      opacity var(--dur-ui) ease,
+      overlay var(--dur-ui) allow-discrete,
+      display var(--dur-ui) allow-discrete;
+  }
+
+  .pmodal[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .pmodal[open] {
+      opacity: 0;
+      transform: translateY(12px) scale(0.98);
+    }
+
+    .pmodal[open]::backdrop {
+      opacity: 0;
+    }
   }
 
   .pmodal__head {

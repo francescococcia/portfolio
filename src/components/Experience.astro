@@ -6,12 +6,13 @@ const { experience } = data;
 
 <section class="experience" id="experience">
   <div class="container">
-    <div class="sec-head reveal">
+    <div class="sec-head">
       <h2>Experience</h2>
       <span class="sec-meta">2021 — now</span>
     </div>
 
     <div class="xp">
+      <span class="xp__line" aria-hidden="true"></span>
       {experience.map((job) => (
         <div class="xp__item reveal">
           <span class="xp__when">{job.dates}</span>
@@ -35,8 +36,19 @@ const { experience } = data;
 
 <style>
   .xp {
+    position: relative;
     border-left: 1px solid var(--line);
     margin-left: 6px;
+  }
+
+  .xp__line {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--accent);
+    transform-origin: top;
   }
 
   .xp__item {

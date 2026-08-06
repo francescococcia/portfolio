@@ -90,25 +90,60 @@ const personSchema = {
     <div class="rails" aria-hidden="true"><i></i><i></i><i></i></div>
     <slot />
 
-    <!-- Scroll reveal -->
+    <!-- Motion: GSAP scroll choreography (content is visible by default; JS only enhances) -->
     <script>
-      const els = document.querySelectorAll('.reveal');
-      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        els.forEach((el) => el.classList.add('visible'));
-      } else {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
-        );
-        els.forEach((el) => observer.observe(el));
-      }
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // staggered batch reveals for lists/grids marked .reveal
+        const items = gsap.utils.toArray<Element>('.reveal');
+        gsap.set(items, { autoAlpha: 0, y: 16 });
+        ScrollTrigger.batch(items, {
+          start: 'top 88%',
+          once: true,
+          onEnter: (batch) =>
+            gsap.to(batch, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.55,
+              ease: 'power3.out',
+              stagger: 0.08,
+              overwrite: true,
+            }),
+        });
+
+        // section title underline draws in
+        gsap.utils.toArray<Element>('.sec-head h2').forEach((h) => {
+          gsap.fromTo(
+            h,
+            { '--underline': 0 },
+            {
+              '--underline': 1,
+              duration: 0.6,
+              ease: 'power3.out',
+              scrollTrigger: { trigger: h, start: 'top 85%', once: true },
+            }
+          );
+        });
+
+        // experience timeline line draws with scroll
+        const line = document.querySelector('.xp__line');
+        if (line) {
+          gsap.fromTo(
+            line,
+            { scaleY: 0 },
+            {
+              scaleY: 1,
+              ease: 'none',
+              scrollTrigger: { trigger: '.xp', start: 'top 75%', end: 'bottom 55%', scrub: 1 },
+            }
+          );
+        }
+      });
     </script>
   </body>
 </html>

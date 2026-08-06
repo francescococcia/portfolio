@@ -219,16 +219,43 @@ main {
   flex-wrap: wrap;
 }
 
-/* ── Scroll reveal ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity var(--dur-reveal) var(--ease-out), transform var(--dur-reveal) var(--ease-out);
+/* ── Scroll reveal ──
+   .reveal is a marker class only: elements are visible by default and
+   GSAP animates them in (no-JS and headless renderers see full content). */
+
+/* ── Hero entrance choreography (pure CSS, runs on load) ── */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: none;
+[data-anim] {
+  animation: rise-in 0.65s var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 95ms);
+}
+
+/* ── Section title underline (drawn in by GSAP) ── */
+.sec-head h2 {
+  position: relative;
+  padding-bottom: 0.55rem;
+}
+
+.sec-head h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(var(--underline, 1));
+  transform-origin: left;
 }
 
 /* ── Scrollbar ── */
@@ -267,10 +294,5 @@ main {
 
   html {
     scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
   }
 }

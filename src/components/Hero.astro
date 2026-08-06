@@ -13,20 +13,20 @@ const facts = [
 
 <header class="hero" id="top">
   <div class="container">
-    <p class="hero__kicker reveal">{personal.title.split('|')[0].trim()} — {personal.location}</p>
-    <h1 class="hero__headline reveal">
+    <p class="hero__kicker" data-anim style="--i: 0">{personal.title.split('|')[0].trim()} — {personal.location}</p>
+    <h1 class="hero__headline" data-anim style="--i: 1">
       Security you can<br /><span class="hero__dim">actually ship.</span>
     </h1>
-    <p class="hero__pitch reveal">
+    <p class="hero__pitch" data-anim style="--i: 2">
       I'm {personal.name} — penetration tester and secure software engineer with four years of
       enterprise production scars. Currently completing an NCSC-certified MSc in Computer Forensics
       &amp; Cyber Security. I think like an attacker and build like an engineer.
     </p>
-    <div class="hero__ctas reveal">
+    <div class="hero__ctas" data-anim style="--i: 3">
       <a href="#work" class="btn btn-fill">See my work</a>
       <a href="#contact" class="btn btn-line">Get in touch</a>
     </div>
-    <div class="hero__facts reveal">
+    <div class="hero__facts" data-anim style="--i: 4">
       {facts.map((fact) => (
         <div class="hero__fact">
           <b>{fact.value}</b>
