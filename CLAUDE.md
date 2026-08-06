@@ -45,7 +45,6 @@ Pushing to `main` deploys to production (https://francescococcia.vercel.app) via
 - `.claude/` and `.claude-flow/` are local AI-tooling state, intentionally gitignored.
 - The OG image text uses `tspan dx=` offsets for word spacing — librsvg (sharp's SVG renderer) collapses regular spaces and `&#160;` entities between tspans.
 - The global `* { margin: 0 }` reset kills native `<dialog>` centering — `.pmodal` restores `margin: auto`. Keep that if adding new dialogs.
-- The OG image (`scripts/og-image.cjs`) still renders the old dark-terminal style — regenerate to match the redesign when touching it.
 
 ## Known gaps (as of 2026-08)
 
