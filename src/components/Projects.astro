@@ -14,7 +14,7 @@ const { projects } = data;
 
     <div class="projects__grid">
       {projects.map((project, i) => (
-        <div class="reveal" style={`transition-delay: ${i * 0.06}s`}>
+        <div class={`reveal${'featured' in project && project.featured ? ' projects__span' : ''}`} style={`transition-delay: ${i * 0.06}s`}>
           <ProjectCard
             id={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
             name={project.name}
@@ -26,6 +26,7 @@ const { projects } = data;
             github={'github' in project ? project.github : undefined}
             url={'url' in project ? project.url : undefined}
             visual={project.visual}
+            featured={'featured' in project ? project.featured : undefined}
           />
         </div>
       ))}
@@ -56,5 +57,9 @@ const { projects } = data;
 
   .projects__grid > div {
     height: 100%;
+  }
+
+  .projects__span {
+    grid-column: 1 / -1;
   }
 </style>

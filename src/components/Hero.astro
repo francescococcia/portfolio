@@ -5,8 +5,8 @@ const { personal } = data;
 
 const facts = [
   { value: '4 years', label: 'enterprise engineering' },
+  { value: '~90%', label: 'injection surface removed' },
   { value: 'NCSC MSc', label: 'Univ. of Greenwich' },
-  { value: 'AZ-900', label: 'Azure certified' },
   { value: '500+', label: 'clients served' },
 ];
 ---
@@ -15,7 +15,7 @@ const facts = [
   <div class="container">
     <p class="hero__kicker" data-anim style="--i: 0">{personal.title.split('|')[0].trim()} — {personal.location}</p>
     <h1 class="hero__headline" data-anim style="--i: 1">
-      Security you can<br /><span class="hero__dim">actually ship.</span>
+      Security you can <span class="hero__dim">actually ship.</span>
     </h1>
     <p class="hero__pitch" data-anim style="--i: 2">
       I'm {personal.name} — penetration tester and secure software engineer with four years of

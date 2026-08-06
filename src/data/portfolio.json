@@ -72,6 +72,20 @@
   },
   "projects": [
     {
+      "name": "Enterprise SQL Injection Hardening",
+      "category": "Production Security",
+      "tagline": "~90% of the injection risk surface removed across 12 modules of an enterprise SaaS serving 500+ corporate clients.",
+      "description": "Three years hardening an enterprise HCM/ERP platform in production at Talentia: least-privilege SQL Server schemas, parameterised queries throughout, and audit logging — delivered across 3 major releases without disrupting 500+ corporate clients.",
+      "highlights": [
+        "~90% reduction of the SQL-injection risk surface across 12 integrated modules",
+        "Least-privilege schemas, parameterised queries, and audit logging as release standards",
+        "Security-aware code reviews catching 4–6 access-control issues per release cycle"
+      ],
+      "tech": [".NET 8", "SQL Server", "RBAC", "OAuth2"],
+      "visual": "modules",
+      "featured": true
+    },
+    {
       "name": "CyberApply",
       "category": "AI · Browser Extension",
       "tagline": "Chrome extension that scans job posts with Gemini AI, extracts ATS keywords and scores your CV match.",
@@ -93,7 +107,7 @@
       "highlights": [
         "Full assessment lifecycle: recon → exploitation → reporting",
         "CVSS-scored findings with business-impact framing",
-        "Professional report format — sample available on request"
+        "Reports follow client-deliverable structure: scope → findings → remediation"
       ],
       "tech": ["Kali Linux", "Nmap", "Metasploit"],
       "visual": "terminal"

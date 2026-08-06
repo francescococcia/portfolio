@@ -10,14 +10,35 @@ interface Props {
   github?: string;
   url?: string;
   visual: string;
+  featured?: boolean;
 }
 
-const { id, name, category, tagline, description, highlights, tech, github, url, visual } =
+const { id, name, category, tagline, description, highlights, tech, github, url, visual, featured = false } =
   Astro.props;
 ---
 
-<button class="pcard" data-modal={`modal-${id}`} type="button">
+<button class={`pcard${featured ? ' pcard--featured' : ''}`} data-modal={`modal-${id}`} type="button">
   <div class="pcard__viz" aria-hidden="true">
+    {visual === 'modules' && (
+      <svg viewBox="0 0 240 100">
+        <g fill="none" stroke-width="1.6">
+          <rect x="18" y="18" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="44" y="18" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="70" y="18" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="96" y="18" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="18" y="44" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="44" y="44" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="70" y="44" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="96" y="44" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="18" y="70" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="44" y="70" width="20" height="20" rx="4" stroke="var(--accent)" />
+          <rect x="70" y="70" width="20" height="20" rx="4" stroke="var(--ink-2)" opacity=".45" />
+          <rect x="96" y="70" width="20" height="20" rx="4" stroke="var(--ink-2)" opacity=".45" />
+        </g>
+        <text x="150" y="52" font-size="26" font-weight="700" fill="var(--accent)">−90%</text>
+        <text x="150" y="72" font-size="9" font-family="monospace" fill="var(--ink-2)">risk surface</text>
+      </svg>
+    )}
     {visual === 'extension' && (
       <svg viewBox="0 0 240 100">
         <rect x="12" y="10" width="150" height="80" rx="7" fill="none" stroke="var(--ink-2)" stroke-width="1.4" opacity=".55" />
@@ -54,15 +75,15 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
     <span class="pcard__cat">{category}</span>
     <h3 class="pcard__name">{name}</h3>
     <p class="pcard__tagline">{tagline}</p>
-    <span class="pcard__open">Case study</span>
+    <span class="pcard__open">Details</span>
   </div>
 </button>
 
-<dialog class="pmodal" id={`modal-${id}`}>
+<dialog class="pmodal" id={`modal-${id}`} aria-labelledby={`modal-${id}-title`}>
   <div class="pmodal__head">
     <div>
       <span class="pcard__cat">{category}</span>
-      <h3 class="pmodal__title">{name}</h3>
+      <h3 class="pmodal__title" id={`modal-${id}-title`}>{name}</h3>
     </div>
     <button class="pmodal__close" data-close aria-label="Close">✕</button>
   </div>
@@ -83,7 +104,7 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
     <div class="pmodal__actions">
       {github && (
         <a class="btn btn-fill" href={`https://${github}`} target="_blank" rel="noopener noreferrer">
-          View on GitHub
+          GitHub
         </a>
       )}
       {url && (
@@ -142,9 +163,34 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
     padding: 20px 22px 22px;
   }
 
+  .pcard--featured {
+    grid-column: 1 / -1;
+  }
+
+  @media (min-width: 900px) {
+    .pcard--featured {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+    }
+
+    .pcard--featured .pcard__viz {
+      height: 100%;
+      border-bottom: none;
+      border-right: 1px solid var(--line);
+    }
+
+    .pcard--featured .pcard__body {
+      padding: 28px 32px;
+    }
+
+    .pcard--featured .pcard__name {
+      font-size: 1.3rem;
+    }
+  }
+
   .pcard__cat {
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     color: var(--accent);
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -172,12 +218,14 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
   }
 
   .pcard__open::after {
-    content: ' →';
-    transition: margin var(--dur-micro) ease;
+    content: '→';
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform var(--dur-micro) ease;
   }
 
   .pcard:hover .pcard__open::after {
-    margin-left: 4px;
+    transform: translateX(4px);
   }
 
   /* modal */
@@ -268,6 +316,11 @@ const { id, name, category, tagline, description, highlights, tech, github, url,
   .pmodal__desc {
     color: var(--ink-2);
     font-size: 0.93rem;
+    max-width: 60ch;
+  }
+
+  .pmodal__list li {
+    max-width: 60ch;
   }
 
   .pmodal__label {

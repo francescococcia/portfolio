@@ -8,7 +8,7 @@ const { hackathons } = data;
   <div class="container">
     <div class="sec-head">
       <h2>Hackathons</h2>
-      <span class="sec-meta">2026</span>
+      <span class="sec-meta">{String(hackathons.length).padStart(2, '0')} events</span>
     </div>
 
     <div class="hk">
@@ -29,16 +29,10 @@ const { hackathons } = data;
     gap: 26px;
     padding: 20px 4px;
     border-bottom: 1px solid var(--line);
-    transition: background var(--dur-micro) ease, padding var(--dur-ui) var(--ease-out);
   }
 
   .hk__row:first-child {
     border-top: 1px solid var(--line);
-  }
-
-  .hk__row:hover {
-    background: var(--surface);
-    padding-left: 14px;
   }
 
   .hk__date {
