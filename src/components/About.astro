@@ -1,0 +1,157 @@
+---
+import data from '../data/portfolio.json';
+
+const { summary } = data;
+
+const stats = [
+  { value: '4 yrs', label: 'Enterprise Engineering', icon: '⚡' },
+  { value: 'MSc', label: 'NCSC-Certified Programme', icon: '🎓' },
+  { value: 'AZ-900', label: 'Azure Certified', icon: '☁️' },
+  { value: '500+', label: 'Enterprise Clients Served', icon: '🏢' },
+];
+---
+
+<section class="about" id="about">
+  <div class="container">
+    <p class="section-label reveal">// about</p>
+    <h2 class="section-title reveal">Who I Am</h2>
+
+    <div class="about__grid">
+      <div class="about__bio reveal">
+        <p class="about__bio-text">{summary}</p>
+
+        <div class="about__bio-details">
+          <div class="about__detail">
+            <span class="about__detail-label">Location</span>
+            <span class="about__detail-value">London, UK</span>
+          </div>
+          <div class="about__detail">
+            <span class="about__detail-label">Status</span>
+            <span class="about__detail-value about__status">
+              <span class="about__status-dot" aria-hidden="true"></span>
+              Available for opportunities
+            </span>
+          </div>
+          <div class="about__detail">
+            <span class="about__detail-label">Languages</span>
+            <span class="about__detail-value">Italian (native) · English (fluent)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about__stats">
+        {stats.map((stat, i) => (
+          <div class={`about__stat card reveal`} style={`transition-delay: ${i * 0.1}s`}>
+            <div class="about__stat-value">{stat.value}</div>
+            <div class="about__stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about__bio-text {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .about__bio-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    border-left: 2px solid var(--accent-green);
+    padding-left: 1.25rem;
+  }
+
+  .about__detail {
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .about__detail-label {
+    color: var(--text-muted);
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .about__detail-value {
+    color: var(--text-primary);
+  }
+
+  .about__status {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--accent-green);
+  }
+
+  .about__status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    box-shadow: 0 0 6px var(--accent-green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--accent-green); }
+    50%       { opacity: 0.6; box-shadow: 0 0 12px var(--accent-green); }
+  }
+
+  .about__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .about__stat {
+    text-align: center;
+    padding: 1.75rem 1rem;
+  }
+
+  .about__stat-value {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about__stat-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 768px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .about__stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .about__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

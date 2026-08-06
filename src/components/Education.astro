@@ -1,0 +1,226 @@
+---
+import data from '../data/portfolio.json';
+
+const { education, certifications } = data;
+---
+
+<section class="education" id="education">
+  <div class="container">
+    <p class="section-label reveal">// education & certs</p>
+    <h2 class="section-title reveal">Qualifications</h2>
+
+    <div class="education__grid">
+      <!-- Degrees -->
+      <div class="education__col reveal">
+        <h3 class="education__col-title">
+          <span class="education__col-dot" aria-hidden="true"></span>
+          Degrees
+        </h3>
+
+        <div class="education__degrees">
+          {education.map((edu) => (
+            <div class="education__degree card">
+              <div class="education__degree-year">{edu.year}</div>
+              <div class="education__degree-content">
+                <div class="education__degree-institution">{edu.institution}</div>
+                <div class="education__degree-title">{edu.degree}</div>
+                {edu.notes && (
+                  <div class="education__degree-notes">{edu.notes}</div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="education__col reveal" style="transition-delay: 0.15s">
+        <h3 class="education__col-title">
+          <span class="education__col-dot education__col-dot--purple" aria-hidden="true"></span>
+          Certifications
+        </h3>
+
+        <div class="education__certs">
+          {certifications.map((cert) => (
+            <div class="education__cert card">
+              <div class="education__cert-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="6"/>
+                  <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+              </div>
+              <span class="education__cert-name">{cert}</span>
+            </div>
+          ))}
+
+          <!-- In-progress note -->
+          <div class="education__in-progress card">
+            <div class="education__ip-header">
+              <span class="education__ip-badge">In Progress</span>
+            </div>
+            <div class="education__ip-list">
+              <div class="education__ip-item">
+                <span class="education__ip-dot" aria-hidden="true"></span>
+                CompTIA Security+ (target: 2026)
+              </div>
+              <div class="education__ip-item">
+                <span class="education__ip-dot" aria-hidden="true"></span>
+                eJPT / PNPT (offensive security path)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .education__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .education__col-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .education__col-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-green);
+    box-shadow: 0 0 6px rgba(0, 255, 157, 0.6);
+    flex-shrink: 0;
+  }
+
+  .education__col-dot--purple {
+    background: var(--accent-purple);
+    box-shadow: 0 0 6px rgba(123, 97, 255, 0.6);
+  }
+
+  .education__degrees {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .education__degree {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .education__degree-year {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-green);
+    white-space: nowrap;
+    padding-top: 0.15rem;
+    writing-mode: horizontal-tb;
+  }
+
+  .education__degree-institution {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .education__degree-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+  }
+
+  .education__degree-notes {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--accent-purple);
+  }
+
+  .education__certs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .education__cert {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .education__cert-icon {
+    color: var(--accent-green);
+    flex-shrink: 0;
+  }
+
+  .education__cert-name {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .education__in-progress {
+    border-color: rgba(123, 97, 255, 0.25);
+  }
+
+  .education__ip-header {
+    margin-bottom: 0.85rem;
+  }
+
+  .education__ip-badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--accent-purple);
+    border: 1px solid rgba(123, 97, 255, 0.4);
+    border-radius: 3px;
+    padding: 0.2rem 0.55rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .education__ip-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .education__ip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .education__ip-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-purple);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .education__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

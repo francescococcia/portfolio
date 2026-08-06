@@ -1,0 +1,47 @@
+---
+import data from '../data/portfolio.json';
+import ProjectCard from './ProjectCard.astro';
+
+const { projects } = data;
+---
+
+<section class="projects" id="projects">
+  <div class="container">
+    <p class="section-label reveal">// projects</p>
+    <h2 class="section-title reveal">Selected Work</h2>
+
+    <div class="projects__grid">
+      {projects.map((project, i) => (
+        <div class="reveal" style={`transition-delay: ${i * 0.1}s`}>
+          <ProjectCard
+            name={project.name}
+            description={project.description}
+            tech={project.tech}
+            github={'github' in project ? project.github : undefined}
+            url={'url' in project ? project.url : undefined}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 900px) {
+    .projects__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .projects__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

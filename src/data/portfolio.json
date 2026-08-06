@@ -1,0 +1,110 @@
+{
+  "personal": {
+    "name": "Francesco Coccia",
+    "title": "Cyber Security Analyst | Penetration Tester | Secure Software Engineer",
+    "location": "London, UK",
+    "email": "francesco_coccia@hotmail.com",
+    "linkedin": "linkedin.com/in/coccia-francesco",
+    "github": "github.com/francescococcia",
+    "phone": "+44 7404 831396"
+  },
+  "summary": "Cyber security professional with 4 years of enterprise software engineering experience, currently completing an NCSC-certified MSc in Computer Forensics and Cyber Security at the University of Greenwich. I bring hands-on expertise in penetration testing, digital forensics, and secure API development — combined with real production scars from hardening .NET 8 and Ruby on Rails applications across multi-tenant SaaS environments. I think like an attacker, build like an engineer.",
+  "experience": [
+    {
+      "company": "Foundermatcha",
+      "role": "Data Security and Compliance Lead",
+      "dates": "May 2026 – Present",
+      "location": "London, UK",
+      "bullets": [
+        "Architecting the full data security strategy for an early-stage UK platform handling sensitive founder, developer, and startup data — building compliance posture from zero.",
+        "Designing and enforcing internal access controls, data handling policies, and security governance frameworks aligned with UK GDPR and ISO 27001.",
+        "Running continuous security reviews and vulnerability assessments, pressure-testing infrastructure assumptions with the Tech Lead before risks reach production.",
+        "Embedding security-by-design thinking across product decisions — advising on data flows, third-party integrations, and cloud config to shrink the attack surface."
+      ],
+      "tech": ["UK GDPR", "ISO 27001", "Cloud Security", "IAM", "Vulnerability Assessment"]
+    },
+    {
+      "company": "Talentia Software",
+      "role": "Software Engineer",
+      "dates": "November 2022 – September 2025",
+      "location": "Bari, Italy",
+      "bullets": [
+        "Delivered 3 major releases of an enterprise HCM/ERP SaaS platform serving 500+ corporate clients, enforcing secure coding standards, input validation, and RBAC throughout.",
+        "Designed SQL Server schemas with least-privilege access, parameterised queries, and audit logging — reducing injection risk surface by ~90% across 12 integrated modules.",
+        "Built RESTful API integrations with OAuth2 and API key authentication across 8 third-party SaaS platforms.",
+        "Conducted security-aware code reviews catching 4–6 access control issues per release cycle."
+      ],
+      "tech": [".NET 8", "Angular 18", "SQL Server", "Azure", "OAuth2", "RBAC"]
+    },
+    {
+      "company": "L&G Solution Srl",
+      "role": "Full Stack Developer",
+      "dates": "February 2021 – October 2022",
+      "location": "Foggia, Italy",
+      "bullets": [
+        "Built 6 full-stack web applications with secure authentication, session management, and authorisation flows following OWASP principles.",
+        "Mitigated XSS and SQL injection vulnerabilities, resolving 20+ security-related bugs including authentication edge cases and API exposure issues."
+      ],
+      "tech": ["Ruby on Rails", "React", "PostgreSQL", "OWASP"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Greenwich",
+      "degree": "MSc Computer Forensics and Cyber Security",
+      "year": "2025 – Present",
+      "notes": "NCSC-certified · CREST partner · BCS accredited"
+    },
+    {
+      "institution": "University of Bari",
+      "degree": "BSc Computer Science",
+      "year": "2017 – 2020",
+      "notes": null
+    }
+  ],
+  "skills": {
+    "security_tools": ["Kali Linux", "Metasploit", "Nmap", "Wireshark", "OWASP ZAP", "Burp Suite", "Docker"],
+    "security_frameworks": ["OWASP Top 10", "ISO 27001", "NIST CSF", "Secure SDLC", "CVSS"],
+    "cloud": ["Microsoft Azure (AZ-900)", "IAM", "RBAC", "Azure Defender"],
+    "languages": ["Python", "C#", "JavaScript", "TypeScript", "SQL", "Java", "C/C++"],
+    "frameworks": [".NET 8", "Angular", "React", "Ruby on Rails", "Node.js"],
+    "databases": ["SQL Server", "PostgreSQL", "MySQL"]
+  },
+  "projects": [
+    {
+      "name": "CyberApply",
+      "description": "A Chrome Extension that uses the Gemini AI API to auto-scan job descriptions, extract ATS keywords, score CV match percentage, and generate tailored CVs — built with security-aware API integration and clean workflow automation.",
+      "tech": ["JavaScript", "Chrome Extension API", "Gemini AI API"],
+      "github": "github.com/francescococcia"
+    },
+    {
+      "name": "Penetration Testing Lab Work",
+      "description": "Structured vulnerability assessments in controlled environments producing professional pentest reports with CVSS risk ratings and remediation recommendations.",
+      "tech": ["Kali Linux", "Nmap", "Metasploit"]
+    },
+    {
+      "name": "TryHackMe & HackTheBox",
+      "description": "Active CTF practitioner working through offensive security paths — penetration testing, privilege escalation, web exploitation, and network attacks.",
+      "tech": ["Kali Linux", "Burp Suite", "Metasploit", "Nmap"],
+      "url": "tryhackme.com/p/francescococcia"
+    }
+  ],
+  "hackathons": [
+    {
+      "name": "Cursor Cybersecurity London Hackathon",
+      "date": "August 2026"
+    },
+    {
+      "name": "Hack Nation — 6th Global AI Hackathon",
+      "date": "July 2026"
+    }
+  ],
+  "certifications": ["Microsoft AZ-900 Azure Fundamentals (2023)"],
+  "achievements": [
+    "NCSC-certified MSc — one of the UK's most accredited cyber security programmes",
+    "~90% reduction in SQL injection risk surface across 12 modules",
+    "Active TryHackMe profile: francescococcia",
+    "Active HackTheBox CTF profile"
+  ],
+  "spoken_languages": ["Italian (native)", "English (fluent)"]
+}

@@ -1,0 +1,66 @@
+---
+import data from '../data/portfolio.json';
+
+const { hackathons } = data;
+---
+
+<section class="hackathons" id="hackathons">
+  <div class="container">
+    <p class="section-label reveal">// hackathons</p>
+    <h2 class="section-title reveal">Hackathons</h2>
+
+    <ul class="hackathons__list">
+      {hackathons.map((h, i) => (
+        <li class="hackathons__item reveal" style={`transition-delay: ${i * 0.08}s`}>
+          <span class="hackathons__date">{h.date}</span>
+          <span class="hackathons__name">{h.name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hackathons__list {
+    max-width: 800px;
+  }
+
+  .hackathons__item {
+    display: flex;
+    align-items: baseline;
+    gap: 2rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hackathons__item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .hackathons__date {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-green);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    min-width: 7.5rem;
+  }
+
+  .hackathons__name {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 600px) {
+    .hackathons__item {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .hackathons__date {
+      min-width: 0;
+    }
+  }
+</style>
