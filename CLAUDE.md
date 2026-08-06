@@ -34,7 +34,7 @@ There are no tests or linters configured.
 
 ## Known gaps (as of 2026-08)
 
-- The canonical URL in `Layout.astro` points to `https://francescococcia.dev`, a domain Francesco does **not** own yet. Once the Vercel project is connected, switch to the real production URL (ideally via `site` in `astro.config.mjs` + `Astro.site`) and make the `og:image` URL absolute at the same time.
+- The production site is `https://francescococcia.vercel.app` (set as `site` in `astro.config.mjs`; `Layout.astro` derives canonical + absolute `og:image` from `Astro.site`). Francesco deliberately has no custom domain for now — if he buys one later, change `site` and connect it in Vercel.
 - **No CV download by deliberate choice** — the portfolio itself is the CV. Don't re-add a CV button without asking.
 - Repo: `github.com/francescococcia/portfolio` (public). Public contact email is intentionally the hotmail one in `portfolio.json`.
 - `skills.databases`, `achievements`, and `spoken_languages` in `portfolio.json` are not rendered anywhere (About hardcodes languages).

@@ -11,8 +11,8 @@ const {
   description = "Cyber security professional with 4 years of enterprise engineering experience. Specialising in penetration testing, digital forensics, and secure software development. Based in London, UK.",
 } = Astro.props;
 
-const canonicalURL = "https://francescococcia.dev";
-const ogImage = "/og-image.png";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og-image.png', Astro.site);
 ---
 
 <!doctype html>
@@ -28,6 +28,7 @@ const ogImage = "/og-image.png";
     <meta name="description" content={description} />
     <meta name="author" content="Francesco Coccia" />
     <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
