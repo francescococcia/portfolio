@@ -2,12 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import Experience from '../components/Experience.astro';
 import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
 import Hackathons from '../components/Hackathons.astro';
-import CTFLabs from '../components/CTFLabs.astro';
+import Skills from '../components/Skills.astro';
 import Education from '../components/Education.astro';
 import Contact from '../components/Contact.astro';
 ---
@@ -16,19 +14,10 @@ import Contact from '../components/Contact.astro';
   <Nav />
   <main>
     <Hero />
-    <div class="divider" aria-hidden="true"></div>
-    <About />
-    <div class="divider" aria-hidden="true"></div>
-    <Skills />
-    <div class="divider" aria-hidden="true"></div>
-    <Experience />
-    <div class="divider" aria-hidden="true"></div>
     <Projects />
-    <div class="divider" aria-hidden="true"></div>
+    <Experience />
     <Hackathons />
-    <div class="divider" aria-hidden="true"></div>
-    <CTFLabs />
-    <div class="divider" aria-hidden="true"></div>
+    <Skills />
     <Education />
     <Contact />
   </main>

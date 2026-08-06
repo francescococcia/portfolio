@@ -73,20 +73,44 @@
   "projects": [
     {
       "name": "CyberApply",
-      "description": "A Chrome Extension that uses the Gemini AI API to auto-scan job descriptions, extract ATS keywords, score CV match percentage, and generate tailored CVs — built with security-aware API integration and clean workflow automation.",
+      "category": "AI · Browser Extension",
+      "tagline": "Chrome extension that scans job posts with Gemini AI, extracts ATS keywords and scores your CV match.",
+      "description": "A Chrome extension that turns job hunting into an engineering problem: it scans job descriptions with the Gemini AI API, extracts the ATS keywords that screening software looks for, and scores how well your CV matches — then generates a tailored version.",
+      "highlights": [
+        "Automatic ATS keyword extraction from any job posting",
+        "CV match percentage scored per posting",
+        "Security-aware API integration — key handling and content-script isolation"
+      ],
       "tech": ["JavaScript", "Chrome Extension API", "Gemini AI API"],
-      "github": "github.com/francescococcia"
+      "github": "github.com/francescococcia",
+      "visual": "extension"
     },
     {
-      "name": "Penetration Testing Lab Work",
-      "description": "Structured vulnerability assessments in controlled environments producing professional pentest reports with CVSS risk ratings and remediation recommendations.",
-      "tech": ["Kali Linux", "Nmap", "Metasploit"]
+      "name": "Pentest Lab Reports",
+      "category": "Offensive Security",
+      "tagline": "Structured vulnerability assessments with CVSS ratings and professional remediation writeups.",
+      "description": "Structured vulnerability assessments in controlled environments, written up the way clients actually receive them: scope, methodology, findings with CVSS risk ratings, and concrete remediation steps.",
+      "highlights": [
+        "Full assessment lifecycle: recon → exploitation → reporting",
+        "CVSS-scored findings with business-impact framing",
+        "Professional report format — sample available on request"
+      ],
+      "tech": ["Kali Linux", "Nmap", "Metasploit"],
+      "visual": "terminal"
     },
     {
       "name": "TryHackMe & HackTheBox",
-      "description": "Active CTF practitioner working through offensive security paths — penetration testing, privilege escalation, web exploitation, and network attacks.",
+      "category": "Continuous Practice",
+      "tagline": "Active CTF practice — web exploitation, privilege escalation, network attacks, OSINT.",
+      "description": "Continuous hands-on offensive security practice: web exploitation, privilege escalation on Linux and Windows, network attacks, Active Directory and OSINT.",
+      "highlights": [
+        "Offensive security learning paths completed continuously",
+        "Realistic machine compromises — from foothold to root",
+        "Web exploitation, privilege escalation, AD attacks, OSINT"
+      ],
       "tech": ["Kali Linux", "Burp Suite", "Metasploit", "Nmap"],
-      "url": "tryhackme.com/p/francescococcia"
+      "url": "tryhackme.com/p/francescococcia",
+      "visual": "rank"
     }
   ],
   "hackathons": [

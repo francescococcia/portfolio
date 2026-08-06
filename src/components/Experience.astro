@@ -1,34 +1,102 @@
 ---
 import data from '../data/portfolio.json';
-import ExperienceItem from './ExperienceItem';
 
 const { experience } = data;
 ---
 
 <section class="experience" id="experience">
   <div class="container">
-    <p class="section-label reveal">// experience</p>
-    <h2 class="section-title reveal">Work History</h2>
+    <div class="sec-head reveal">
+      <h2>Experience</h2>
+      <span class="sec-meta">2021 — now</span>
+    </div>
 
-    <div class="experience__timeline reveal">
-      {experience.map((job, i) => (
-        <ExperienceItem
-          client:load
-          company={job.company}
-          role={job.role}
-          dates={job.dates}
-          location={job.location}
-          bullets={job.bullets}
-          tech={job.tech}
-          isLast={i === experience.length - 1}
-        />
+    <div class="xp">
+      {experience.map((job) => (
+        <div class="xp__item reveal">
+          <span class="xp__when">{job.dates}</span>
+          <h3 class="xp__role">{job.role}</h3>
+          <span class="xp__co">{job.company} · {job.location}</span>
+          <ul class="xp__bullets">
+            {job.bullets.map((b) => (
+              <li>{b}</li>
+            ))}
+          </ul>
+          <div class="chips xp__chips">
+            {job.tech.map((t) => (
+              <span class="chip">{t}</span>
+            ))}
+          </div>
+        </div>
       ))}
     </div>
   </div>
 </section>
 
 <style>
-  .experience__timeline {
-    max-width: 800px;
+  .xp {
+    border-left: 1px solid var(--line);
+    margin-left: 6px;
+  }
+
+  .xp__item {
+    position: relative;
+    padding: 0 0 44px 34px;
+  }
+
+  .xp__item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .xp__when {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink-2);
+    text-transform: uppercase;
+  }
+
+  .xp__role {
+    font-size: 1.1rem;
+    font-weight: 720;
+    margin: 6px 0 2px;
+    letter-spacing: -0.01em;
+  }
+
+  .xp__co {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .xp__bullets {
+    margin-top: 12px;
+  }
+
+  .xp__bullets li {
+    padding: 4px 0 4px 24px;
+    position: relative;
+    font-size: 0.89rem;
+    color: var(--ink-2);
+    max-width: 68ch;
+  }
+
+  .xp__bullets li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .xp__chips {
+    margin-top: 12px;
   }
 </style>

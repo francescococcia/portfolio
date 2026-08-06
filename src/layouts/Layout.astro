@@ -13,6 +13,30 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og-image.png', Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Francesco Coccia',
+  jobTitle: 'Cyber Security Analyst',
+  url: canonicalURL,
+  sameAs: [
+    'https://www.linkedin.com/in/coccia-francesco',
+    'https://github.com/francescococcia',
+    'https://tryhackme.com/p/francescococcia',
+  ],
+  knowsAbout: [
+    'Penetration Testing',
+    'Application Security',
+    'Digital Forensics',
+    'Secure Software Engineering',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'London',
+    addressCountry: 'UK',
+  },
+};
 ---
 
 <!doctype html>
@@ -22,6 +46,15 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Theme before paint: localStorage wins, then system preference -->
+    <script is:inline>
+      (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (t === 'dark') document.documentElement.dataset.theme = 'dark';
+      })();
+    </script>
 
     <!-- Primary Meta -->
     <title>{title}</title>
@@ -47,28 +80,35 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400..750&family=Geist+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
 
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
+    <div class="rails" aria-hidden="true"><i></i><i></i><i></i></div>
     <slot />
 
-    <!-- Intersection Observer for scroll animations -->
+    <!-- Scroll reveal -->
     <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -48px 0px' }
-      );
-
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      const els = document.querySelectorAll('.reveal');
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        els.forEach((el) => el.classList.add('visible'));
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        els.forEach((el) => observer.observe(el));
+      }
     </script>
   </body>
 </html>

@@ -19,3 +19,6 @@ Thumbs.db
 # Local AI tooling state
 .claude/
 .claude-flow/
+
+# Playwright artifacts
+.playwright-mcp/

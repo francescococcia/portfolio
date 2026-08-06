@@ -5,20 +5,27 @@ import ProjectCard from './ProjectCard.astro';
 const { projects } = data;
 ---
 
-<section class="projects" id="projects">
+<section class="projects" id="work">
   <div class="container">
-    <p class="section-label reveal">// projects</p>
-    <h2 class="section-title reveal">Selected Work</h2>
+    <div class="sec-head reveal">
+      <h2>Selected work</h2>
+      <span class="sec-meta">{String(projects.length).padStart(2, '0')} projects</span>
+    </div>
 
     <div class="projects__grid">
       {projects.map((project, i) => (
-        <div class="reveal" style={`transition-delay: ${i * 0.1}s`}>
+        <div class="reveal" style={`transition-delay: ${i * 0.06}s`}>
           <ProjectCard
+            id={project.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}
             name={project.name}
+            category={project.category}
+            tagline={project.tagline}
             description={project.description}
+            highlights={project.highlights}
             tech={project.tech}
             github={'github' in project ? project.github : undefined}
             url={'url' in project ? project.url : undefined}
+            visual={project.visual}
           />
         </div>
       ))}
@@ -26,22 +33,28 @@ const { projects } = data;
   </div>
 </section>
 
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-modal]').forEach((card) => {
+    const dialog = document.getElementById(card.dataset.modal!) as HTMLDialogElement | null;
+    if (!dialog) return;
+    card.addEventListener('click', () => dialog.showModal());
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+    dialog.querySelectorAll('[data-close]').forEach((btn) =>
+      btn.addEventListener('click', () => dialog.close())
+    );
+  });
+</script>
+
 <style>
   .projects__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
   }
 
-  @media (max-width: 900px) {
-    .projects__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
-    .projects__grid {
-      grid-template-columns: 1fr;
-    }
+  .projects__grid > div {
+    height: 100%;
   }
 </style>

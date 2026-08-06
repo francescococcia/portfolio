@@ -4,48 +4,25 @@ import data from '../data/portfolio.json';
 const { skills } = data;
 
 const groups = [
-  {
-    label: 'Security Tools',
-    key: 'security_tools',
-    items: skills.security_tools,
-    color: 'green',
-  },
-  {
-    label: 'Security Frameworks',
-    key: 'security_frameworks',
-    items: skills.security_frameworks,
-    color: 'purple',
-  },
-  {
-    label: 'Languages',
-    key: 'languages',
-    items: skills.languages,
-    color: 'green',
-  },
-  {
-    label: 'Frameworks & Cloud',
-    key: 'frameworks_cloud',
-    items: [...skills.frameworks, ...skills.cloud],
-    color: 'purple',
-  },
+  { label: 'Security', items: skills.security_tools },
+  { label: 'Frameworks & standards', items: skills.security_frameworks },
+  { label: 'Engineering', items: [...skills.languages.slice(0, 5), ...skills.frameworks.slice(0, 3), 'Azure'] },
 ];
 ---
 
 <section class="skills" id="skills">
   <div class="container">
-    <p class="section-label reveal">// skills</p>
-    <h2 class="section-title reveal">Technical Arsenal</h2>
+    <div class="sec-head reveal">
+      <h2>Toolbox</h2>
+    </div>
 
     <div class="skills__grid">
-      {groups.map((group, gi) => (
-        <div class={`skills__group reveal`} style={`transition-delay: ${gi * 0.1}s`}>
-          <div class="skills__group-header">
-            <span class={`skills__group-dot skills__group-dot--${group.color}`} aria-hidden="true"></span>
-            <h3 class="skills__group-title">{group.label}</h3>
-          </div>
-          <div class="skills__badges">
+      {groups.map((group, i) => (
+        <div class="reveal" style={`transition-delay: ${i * 0.06}s`}>
+          <h3 class="skills__label">{group.label}</h3>
+          <div class="chips">
             {group.items.map((item) => (
-              <span class={`badge badge--${group.color}`}>{item}</span>
+              <span class="chip">{item}</span>
             ))}
           </div>
         </div>
@@ -57,74 +34,16 @@ const groups = [
 <style>
   .skills__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 34px;
   }
 
-  .skills__group {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.75rem;
-    transition: border-color 0.25s ease;
-  }
-
-  .skills__group:hover {
-    border-color: rgba(0, 255, 157, 0.25);
-  }
-
-  .skills__group-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .skills__group-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .skills__group-dot--green {
-    background: var(--accent-green);
-    box-shadow: 0 0 6px rgba(0, 255, 157, 0.6);
-  }
-
-  .skills__group-dot--purple {
-    background: var(--accent-purple);
-    box-shadow: 0 0 6px rgba(123, 97, 255, 0.6);
-  }
-
-  .skills__group-title {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
+  .skills__label {
+    font-size: 0.78rem;
     font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-  }
-
-  .skills__badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .badge--purple {
-    color: var(--accent-purple);
-    border-color: rgba(123, 97, 255, 0.35);
-  }
-
-  .badge--purple:hover {
-    border-color: var(--accent-purple);
-    background: rgba(123, 97, 255, 0.06);
-  }
-
-  @media (max-width: 768px) {
-    .skills__grid {
-      grid-template-columns: 1fr;
-    }
+    color: var(--ink-2);
+    margin-bottom: 14px;
   }
 </style>
