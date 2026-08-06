@@ -22,3 +22,6 @@ Thumbs.db
 
 # Playwright artifacts
 .playwright-mcp/
+
+# Impeccable live-mode local state
+.impeccable/
