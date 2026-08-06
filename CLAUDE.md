@@ -12,9 +12,15 @@ Personal cybersecurity portfolio for Francesco Coccia — a single-page static s
 npm run dev      # dev server → http://localhost:4321
 npm run build    # production build → dist/
 npm run preview  # preview the production build locally
+
+node scripts/og-image.cjs   # regenerate public/og-image.png (1200×630 social card)
 ```
 
 There are no tests or linters configured.
+
+## Deployment
+
+Pushing to `main` deploys to production (https://francescococcia.vercel.app) via Vercel Git integration (project `website`). There is no staging — verify `npm run build` locally before pushing.
 
 ## Architecture
 
@@ -31,6 +37,12 @@ There are no tests or linters configured.
 - Link fields in `portfolio.json` are stored **without scheme** (`github.com/...`, `linkedin.com/in/...`); components prepend `https://`.
 - External links get `target="_blank" rel="noopener noreferrer"`; decorative elements get `aria-hidden="true"`.
 - Mobile breakpoints: 768px is the primary one (nav hamburger, single-column layouts); Projects grid also steps at 900px/600px.
+
+## Gotchas
+
+- A local git hook can re-commit/amend automatically (observed commit-hash churn right after committing). Verify `git log` after each commit.
+- `.claude/` and `.claude-flow/` are local AI-tooling state, intentionally gitignored.
+- The OG image text uses `tspan dx=` offsets for word spacing — librsvg (sharp's SVG renderer) collapses regular spaces and `&#160;` entities between tspans.
 
 ## Known gaps (as of 2026-08)
 
